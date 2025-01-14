@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://yd2ww5aamgfe"]
+
+[ext_resource type="Script" path="res://scripts/panda.gd" id="1_6c8at"]
+[ext_resource type="Texture2D" uid="uid://dq2aj7umsvy0y" path="res://assets/panda-idle.png" id="1_gf6ss"]
+[ext_resource type="Texture2D" uid="uid://cw2yalas2tdx8" path="res://assets/panda-walking.png" id="3_n8jup"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqnlh"]
+atlas = ExtResource("1_gf6ss")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6i8v"]
+atlas = ExtResource("1_gf6ss")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2hg1"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lao6y"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx7py"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o67l"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jasin"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30ti0"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q04nd"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaba7"]
+atlas = ExtResource("3_n8jup")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41d4w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqnlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6i8v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2hg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lao6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx7py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o67l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jasin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30ti0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q04nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaba7")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pewku"]
+radius = 5.0
+
+[node name="panda" type="CharacterBody2D"]
+script = ExtResource("1_6c8at")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_41d4w")
+animation = &"walking"
+autoplay = "idle"
+frame_progress = 0.498404
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_pewku")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(5, 1)
+target_position = Vector2(5, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-5, 0)
+target_position = Vector2(-5, 0)
